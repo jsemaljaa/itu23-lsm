@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="green_200">#53AC82</color>
+    <color name="green_500">#46A477</color>
+    <color name="green_700">#1C7349</color>
+    <color name="pink_200">#A44673</color>
+    <color name="pink_700">#902659</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="background">#222C36</color>
+    <color name="headers">#2E3841</color>
+
+    <color name="green">#46A477</color>
+</resources>
