@@ -8,6 +8,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.itu.lsm.databinding.ActivityMainBinding
+import android.widget.SearchView
+import android.view.Menu
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.itu.lsm.classes.Task
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,5 +34,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_tasks, R.id.navigation_search, R.id.navigation_messages))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        val recyclerView: RecyclerView = findViewById(R.id.rvTasks)
+        recyclerView.layoutManager = LinearLayoutManager(this)
     }
 }

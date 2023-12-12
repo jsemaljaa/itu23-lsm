@@ -10,7 +10,9 @@
     <item
         android:id="@+id/navigation_search"
         android:icon="@drawable/ic_search"
-        android:title="@string/title_search"/>
+        android:title="@string/title_search"
+        app:showAsAction="collapseActionView|ifRoom"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
 
     <item
         android:id="@+id/navigation_tasks"

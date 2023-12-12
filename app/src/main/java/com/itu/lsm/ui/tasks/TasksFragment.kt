@@ -7,32 +7,40 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.itu.lsm.TaskAdapter
 import com.itu.lsm.databinding.FragmentTasksBinding
+import com.itu.lsm.classes.Task
 
 class TasksFragment : Fragment() {
 
     private var _binding: FragmentTasksBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
-        val tasksViewModel =
-                ViewModelProvider(this).get(TasksViewModel::class.java)
-
         _binding = FragmentTasksBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
-        val textView: TextView = binding.textTasks
-        tasksViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupTasksRecyclerView()
+    }
+
+    private fun setupTasksRecyclerView() {
+        val taskList = listOf(
+            Task("WED, NOV 29 • 14:00", "English lesson"),
+            Task("FRI, DEC 15 • 11:00", "Cleaning"),
+            // Add more tasks here
+        )
+
+        with(binding.rvTasks) {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = TaskAdapter(taskList)
         }
-        return root
     }
 
     override fun onDestroyView() {

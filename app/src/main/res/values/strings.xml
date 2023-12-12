@@ -5,4 +5,9 @@
     <string name="title_search">Search</string>
     <string name="title_messages">Messages</string>
     <string name="title_profile">Profile</string>
+    <string name="search_hint_big">What services are you looking for?</string>
+    <string name="search_hint_small">Search for a service</string>
+    <string name="user_name_greeting">Hello, Alina</string>
+    <string name="app_label">LSM</string>
+    <string name="search_hint">What services are you looking for?</string>
 </resources>
