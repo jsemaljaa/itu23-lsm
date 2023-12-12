@@ -16,10 +16,13 @@ import com.itu.lsm.R
 import com.itu.lsm.TaskAdapter
 import com.itu.lsm.databinding.FragmentHomeBinding
 
+import android.util.Log
+
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
 
     // ViewModel
     private val homeViewModel by viewModels<HomeViewModel>()
@@ -44,22 +47,30 @@ class HomeFragment : Fragment() {
 
         homeViewModel.tasks.observe(viewLifecycleOwner) { tasks ->
             taskAdapter.updateTasks(tasks)
+            setupTabDots(tasks.size)
         }
+//        Log.d("HomeFragment", "Item count: $itemCount")
 
+        setupRecyclerViewScrollListener()
+    }
+
+    private fun setupTabDots(itemCount: Int) {
         val tabLayout = binding.tabDots
-        val recyclerView = binding.rvTasks
-
-        val itemCount = taskAdapter.itemCount
-
-        for (i in 0 until itemCount) {
+        tabLayout.removeAllTabs()
+        repeat(itemCount) {
             tabLayout.addTab(tabLayout.newTab())
         }
+    }
+
+    private fun setupRecyclerViewScrollListener() {
+        val recyclerView = binding.rvTasks
+        val tabLayout = binding.tabDots
 
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 val layoutManager = recyclerView.layoutManager as LinearLayoutManager
                 val currentPage = layoutManager.findFirstVisibleItemPosition()
-                tabLayout.selectTab(tabLayout.getTabAt(currentPage))
+                tabLayout.getTabAt(currentPage)?.select()
             }
         })
     }
