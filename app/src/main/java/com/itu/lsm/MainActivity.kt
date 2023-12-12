@@ -34,8 +34,5 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_tasks, R.id.navigation_search, R.id.navigation_messages))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        val recyclerView: RecyclerView = findViewById(R.id.rvTasks)
-        recyclerView.layoutManager = LinearLayoutManager(this)
     }
 }

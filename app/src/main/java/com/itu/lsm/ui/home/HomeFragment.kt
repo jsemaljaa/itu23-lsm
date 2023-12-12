@@ -35,7 +35,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Set up the RecyclerView
         binding.rvTasks.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         val taskAdapter = TaskAdapter(emptyList())
         binding.rvTasks.adapter = taskAdapter
@@ -43,18 +42,26 @@ class HomeFragment : Fragment() {
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(binding.rvTasks)
 
-        binding.rvTasks.addItemDecoration(object : RecyclerView.ItemDecoration() {
-            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-                val space = resources.getDimensionPixelSize(R.dimen.activity_horizontal_margin) // Define this in your dimens.xml
-                outRect.left = space
-                outRect.right = space
+        homeViewModel.tasks.observe(viewLifecycleOwner) { tasks ->
+            taskAdapter.updateTasks(tasks)
+        }
+
+        val tabLayout = binding.tabDots
+        val recyclerView = binding.rvTasks
+
+        val itemCount = taskAdapter.itemCount
+
+        for (i in 0 until itemCount) {
+            tabLayout.addTab(tabLayout.newTab())
+        }
+
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                val currentPage = layoutManager.findFirstVisibleItemPosition()
+                tabLayout.selectTab(tabLayout.getTabAt(currentPage))
             }
         })
-
-        // Observe the tasks LiveData from the ViewModel
-        homeViewModel.tasks.observe(viewLifecycleOwner) { tasks ->
-            taskAdapter.updateTasks(tasks) // You'll need to implement updateTasks in your adapter
-        }
     }
 
     override fun onDestroyView() {

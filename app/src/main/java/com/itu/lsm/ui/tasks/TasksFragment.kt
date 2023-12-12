@@ -34,11 +34,10 @@ class TasksFragment : Fragment() {
         val taskList = listOf(
             Task("WED, NOV 29 • 14:00", "English lesson"),
             Task("FRI, DEC 15 • 11:00", "Cleaning"),
-            // Add more tasks here
         )
 
         with(binding.rvTasks) {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             adapter = TaskAdapter(taskList)
         }
     }

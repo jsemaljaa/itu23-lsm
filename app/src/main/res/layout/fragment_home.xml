@@ -11,6 +11,8 @@
         android:id="@+id/tvGreeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="50dp"
         android:text="@string/user_name_greeting"
         android:textColor="@color/white"
         android:textSize="40sp"
@@ -25,29 +27,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="30dp"
         android:text="Upcoming tasks"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/rvTasks"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvGreeting"
         app:layout_constraintVertical_bias="0.867" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTasks"
-        android:layout_width="0dp"
-        android:layout_height="194dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/tvUpcomingTasks"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="300dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:itemCount="3" />
+        app:layout_constraintTop_toBottomOf="@+id/tvUpcomingTasks" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabDots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:tabGravity="center"
+        app:tabIndicatorHeight="0dp"
+        app:tabBackground="@drawable/tab_selector"
+        app:tabIndicator="@drawable/tab_indicator_selector"
+        app:layout_constraintBottom_toBottomOf="@id/rvTasks"
+        app:layout_constraintStart_toStartOf="@id/rvTasks"
+        app:layout_constraintEnd_toEndOf="@id/rvTasks"
+        app:layout_constraintTop_toBottomOf="@id/rvTasks" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

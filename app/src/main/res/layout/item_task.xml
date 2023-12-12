@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp"
-    app:cardBackgroundColor="@color/headers">
+    app:cardBackgroundColor="@color/headers"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,10 +26,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvTaskDate"
+            android:layout_marginTop="4dp"
             android:text="English lesson"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:layout_marginTop="4dp"/>
+            android:textSize="18sp" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
