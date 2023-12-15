@@ -10,4 +10,5 @@
     <string name="user_name_greeting">Hello, Alina</string>
     <string name="app_label">LSM</string>
     <string name="search_hint">What services are you looking for?</string>
+    <string name="service_card_price">~15€/h</string>
 </resources>

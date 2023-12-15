@@ -11,8 +11,8 @@
         android:id="@+id/tvGreeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="48dp"
         android:text="@string/user_name_greeting"
         android:textColor="@color/white"
         android:textSize="40sp"
@@ -29,7 +29,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="8dp"
         android:text="Upcoming tasks"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -59,7 +59,7 @@
         android:id="@+id/tabDots"
         style="@style/CustomTabLayout"
         android:layout_width="wrap_content"
-        android:layout_height="30px"
+        android:layout_height="10dp"
         android:background="#00FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -69,5 +69,14 @@
         app:tabGravity="center"
         app:tabIndicator="@drawable/tab_indicator_selector"
         app:tabIndicatorHeight="0dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvInspiration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:clipToPadding="false"
+        android:padding="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
