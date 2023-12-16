@@ -3,7 +3,6 @@ package com.itu.lsm
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Switch
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.itu.lsm.databinding.ItemTaskBinding
@@ -18,7 +17,7 @@ class TaskAdapter(private var tasks: List<Task>) : RecyclerView.Adapter<TaskAdap
 
         fun bind(task: Task) {
             tvTaskDate.text = task.date
-            tvTaskDescription.text = task.description
+            tvTaskDescription.text = task.title
         }
     }
 

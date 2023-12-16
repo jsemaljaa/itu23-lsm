@@ -19,4 +19,5 @@
     <string name="reservation_history">Reservation History</string>
     <string name="payment">Payment</string>
     <string name="about">About</string>
+    <string name="service_card_price">~15€/h</string>
 </resources>
