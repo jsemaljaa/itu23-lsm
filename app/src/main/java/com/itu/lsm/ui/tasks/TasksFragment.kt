@@ -59,11 +59,9 @@ class TasksFragment : Fragment(), TaskBigAdapter.OnTaskClickListener {
         val taskDetailsFragment = TaskDetailsFragment.newInstance(task)
         requireActivity().supportFragmentManager.beginTransaction().apply {
             // Replace the current fragment with the TaskDetailsFragment
-            replace(R.id.container, taskDetailsFragment)
+            replace(R.id.nav_host_fragment_activity_main, taskDetailsFragment)
 
-            // Add this transaction to the back stack. This allows users to navigate back to the task list
             addToBackStack("taskDetails")
-
             commit()
         }
     }
