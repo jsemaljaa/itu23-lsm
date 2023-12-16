@@ -5,16 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.itu.lsm.TaskAdapter
 import com.itu.lsm.databinding.FragmentHomeBinding
 
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
-import com.itu.lsm.InspirationAdapter
+import com.itu.lsm.ServiceAdapter
 import com.itu.lsm.classes.Task
 
 class HomeFragment : Fragment() {
@@ -37,34 +35,43 @@ class HomeFragment : Fragment() {
 
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
-//        binding.rvTasks.apply {
-//            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-//            adapter = taskAdapter
-//            PagerSnapHelper().attachToRecyclerView(this)
-//        }
-
-        //////////////////////////////////// OLD
+        // Processing Upcoming tasks //
         binding.rvTasks.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        val taskAdapter = TaskAdapter(emptyList())
+        val ttasks: MutableList<Task> = mutableListOf()
+        ttasks.clear()
+        val taskAdapter = TaskAdapter(ttasks)
         binding.rvTasks.adapter = taskAdapter
 
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(binding.rvTasks)
-        //////////////////////////////////// OLD
 
         homeViewModel.tasks.observe(viewLifecycleOwner) { tasks ->
             taskAdapter.updateTasks(tasks)
-            setupTabDots(tasks.size)
+            setupTabDots(minOf(tasks.size, 3))
         }
 
-//        val adapter = InspirationAdapter(homeViewModel.inspirationList)
-//        binding.rvInspirationCards.adapter = adapter
-//
-//        viewModel.inspirationListLiveData.observe(viewLifecycleOwner, { list ->
-//            adapter.updateList(list)
-//        })
 
-//        Log.d("HomeFragment", "Item count: $itemCount")
+        // Processing Inspiration for you section //
+        binding.rvInspiration.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        val serviceAdapterInsp = ServiceAdapter(emptyList())
+        binding.rvInspiration.adapter = serviceAdapterInsp
+
+        PagerSnapHelper().attachToRecyclerView(binding.rvInspiration)
+
+        homeViewModel.servicesInspiration.observe(viewLifecycleOwner) { services ->
+            serviceAdapterInsp.updateServices(services)
+        }
+
+        // Processing Popular in your area section //
+        binding.rvPopular.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        val serviceAdapterPop = ServiceAdapter(emptyList())
+        binding.rvPopular.adapter = serviceAdapterPop
+
+        PagerSnapHelper().attachToRecyclerView(binding.rvPopular)
+
+        homeViewModel.servicesPopular.observe(viewLifecycleOwner) { services ->
+            serviceAdapterPop.updateServices(services)
+        }
 
         setupRecyclerViewScrollListener()
     }

@@ -5,24 +5,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.itu.lsm.databinding.ItemTaskBinding
+import com.itu.lsm.databinding.ItemTaskCardSmallBinding
 import com.itu.lsm.classes.Task
 
-class TaskAdapter(private var tasks: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+class TaskAdapter(private var tasks: MutableList<Task>) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     class TaskViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val binding = ItemTaskBinding.bind(view)
+        private val binding = ItemTaskCardSmallBinding.bind(view)
         val tvTaskDate: TextView = binding.tvTaskDate
         val tvTaskDescription: TextView = binding.tvTaskDescription
 
         fun bind(task: Task) {
-            tvTaskDate.text = task.date
+            tvTaskDate.text = task.date + " " + task.time
             tvTaskDescription.text = task.title
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_task, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_task_card_small, parent, false)
         return TaskViewHolder(view)
     }
 
@@ -31,10 +31,11 @@ class TaskAdapter(private var tasks: List<Task>) : RecyclerView.Adapter<TaskAdap
         holder.bind(task)
     }
 
-    override fun getItemCount() = tasks.size
+    override fun getItemCount() = minOf(tasks.size, 3)
 
     fun updateTasks(newTasks: List<Task>) {
-        tasks = newTasks
+        tasks.clear()
+        tasks.addAll(newTasks.take(3))
         notifyDataSetChanged()
     }
 }
