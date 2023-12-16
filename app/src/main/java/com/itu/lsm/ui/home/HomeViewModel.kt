@@ -12,32 +12,71 @@ import com.itu.lsm.classes.Task
 
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.itu.lsm.classes.Service
 
 class HomeViewModel : ViewModel() {
 
     private val database = Firebase.database
+
     private val tasksRef = database.getReference("tasks")
+    private val servicesRef = database.getReference("services")
+
     private val _tasks = MutableLiveData<List<Task>>()
     val tasks: LiveData<List<Task>> = _tasks
 
+    private val _servicesInspiration = MutableLiveData<List<Service>>()
+    val servicesInspiration: LiveData<List<Service>> = _servicesInspiration
+
+
+    private val _servicesPopular = MutableLiveData<List<Service>>()
+    val servicesPopular: LiveData<List<Service>> = _servicesPopular
+
     init {
         loadTasks()
+        loadServices()
     }
 
     private fun loadTasks() {
         tasksRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val taskList = mutableListOf<Task>()
-//                for (snapshot in dataSnapshot.children) {
-//                    val task = snapshot.getValue(Task::class.java)
-//                    task?.let { taskList.add(it) }
-//                }
                 dataSnapshot.children.mapNotNullTo(taskList) { it.getValue<Task>(Task::class.java) }
                 _tasks.value = taskList
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 Log.w("loadPost:onCancelled", databaseError.toException())
+            }
+        })
+    }
+
+    private fun loadServices() {
+        servicesRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val serviceList = mutableListOf<Service>()
+
+                val inspList = mutableListOf<Service>()
+                val popList = mutableListOf<Service>()
+
+                dataSnapshot.children.forEach{
+                    val service = it.getValue<Service>(Service::class.java)
+                    when (it.key) {
+                        "1", "2", "3" -> {
+                            if (service != null) inspList.add(service)
+                        }
+                        "4", "5", "6" -> {
+                            if (service != null) popList.add(service)
+                        }
+                    }
+                }
+
+//                dataSnapshot.children.mapNotNullTo(serviceList) { it.getValue<Service>(Service::class.java) }
+                _servicesInspiration.value = inspList
+                _servicesPopular.value = popList
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w("loadServices:onCancelled", databaseError.toException())
             }
         })
     }

@@ -1,21 +1,28 @@
 package com.itu.lsm.ui.tasks
 
+import TaskBigAdapter
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.itu.lsm.TaskAdapter
-import com.itu.lsm.databinding.FragmentTasksBinding
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.itu.lsm.R
 import com.itu.lsm.classes.Task
+import com.itu.lsm.databinding.FragmentTasksBinding
 
-class TasksFragment : Fragment() {
+
+class TasksFragment : Fragment(), TaskBigAdapter.OnTaskClickListener {
 
     private var _binding: FragmentTasksBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var tasksViewModel: TasksViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,19 +34,62 @@ class TasksFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupTasksRecyclerView()
+
+        tasksViewModel = ViewModelProvider(this).get(TasksViewModel::class.java)
+
+        binding.rvTasks.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        val taskBigAdapter = TaskBigAdapter(emptyList(), { task ->
+            showConfirmationDialog(task)
+        }, { task ->
+            // Handle contact click
+        }).apply {
+            taskClickListener = this@TasksFragment
+        }
+
+        binding.rvTasks.adapter = taskBigAdapter
+
+        tasksViewModel.tasks.observe(viewLifecycleOwner) {tasks ->
+            taskBigAdapter.updateTasks(tasks)
+        }
     }
 
-    private fun setupTasksRecyclerView() {
-        val taskList = listOf(
-            Task("WED, NOV 29 • 14:00", "English lesson"),
-            Task("FRI, DEC 15 • 11:00", "Cleaning"),
-        )
+    override fun onCardClicked(task: Task) {
+        // Start TaskDetailsFragment and pass the task to it
+        val taskDetailsFragment = TaskDetailsFragment.newInstance(task)
+        requireActivity().supportFragmentManager.beginTransaction().apply {
+            // Replace the current fragment with the TaskDetailsFragment
+            replace(R.id.container, taskDetailsFragment)
 
-        with(binding.rvTasks) {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            adapter = TaskAdapter(taskList)
+            // Add this transaction to the back stack. This allows users to navigate back to the task list
+            addToBackStack("taskDetails")
+
+            commit()
         }
+    }
+
+
+    private fun showConfirmationDialog(task: Task) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Confirm Cancellation")
+        builder.setMessage("Are you sure you want to cancel ${task.title}?")
+
+        builder.setPositiveButton("Yes") { dialog, which ->
+            deleteTask(task)
+        }
+
+        builder.setNegativeButton("No") { dialog, which ->
+            dialog.dismiss()
+        }
+
+        builder.show()
+    }
+
+    private fun deleteTask(task: Task) {
+        val database = Firebase.database
+        val tasksRef = database.getReference("tasks")
+
+        tasksRef.child(task.id).removeValue()
     }
 
     override fun onDestroyView() {
