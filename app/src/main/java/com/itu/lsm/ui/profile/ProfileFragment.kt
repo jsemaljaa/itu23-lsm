@@ -19,20 +19,26 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
-        val profileViewModel =
-                ViewModelProvider(this).get(ProfileViewModel::class.java)
+        val profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textProfile
-        profileViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        val textView1: TextView = binding.nameText
+        val textView2: TextView = binding.surnameText
+
+        profileViewModel.name.observe(viewLifecycleOwner) {
+            textView1.text = it
         }
+
+        profileViewModel.surname.observe(viewLifecycleOwner) {
+            textView2.text = it
+        }
+
         return root
     }
 
@@ -40,4 +46,20 @@ class ProfileFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
+
+// todo add the logic to the switch button
+//ToggleButton switchButton = findViewById(R.id.switchButton);
+//
+//switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//    @Override
+//    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//        // Handle the switch state change (isChecked)
+//        if (isChecked) {
+//            // Switch is ON
+//        } else {
+//            // Switch is OFF
+//        }
+//    }
+//});

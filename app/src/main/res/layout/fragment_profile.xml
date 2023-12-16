@@ -1,22 +1,356 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Author: Anastasiia Berezovska xberez04 -->
+<!-- Profile Screen with the account settings -->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
-    <TextView
-        android:id="@+id/text_profile"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Top part of screen -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="180dp">
+            </ImageView>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            </ScrollView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="100dp">
+
+                <!-- Logo  -->
+                <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/logo">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/nameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="68dp"
+                    android:layout_toEndOf="@id/profileImage"
+                    android:text="@string/name"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/surnameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="98dp"
+                    android:layout_toEndOf="@id/profileImage"
+                    android:text="@string/surname"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold">
+                </TextView>
+
+                <!-- Default Profile Picture  -->
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="185dp"
+                    android:src="@drawable/default_profile_pic" />
+
+            </RelativeLayout>
+
+            <!-- Main part of screen (grey bg)  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_upper_corners"
+                android:orientation="vertical"
+                android:layout_marginTop="180dp">
+            </LinearLayout>
+
+            <!--  Dark mode   -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="255dp"
+                android:layout_marginEnd="40dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_toEndOf="@id/circleImageView1"
+                    android:text="@string/dark_mode"
+                    android:textColor="@color/cardBackground"
+                    android:textSize="18sp"/>
+
+                <ImageView
+                    android:id="@+id/circleImageView1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/baseline_circle_24"
+                    tools:ignore="DuplicateIds" />
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="11dp"
+                    android:src="@drawable/ic_mode_dark_light"/>
+
+                <ToggleButton
+                    android:id="@+id/switchButton"
+                    android:layout_width="100dp"
+                    android:layout_height="38dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/switch_btn"
+                    android:textStyle="bold"
+                    android:textSize="16dp"/>
+
+<!--                    android:textOn="ON"-->
+<!--                    android:textOff="OFF"/>-->
+
+                <!--  todo add circle inside the btn-->
+            </RelativeLayout>
+
+            <!-- Colorful line divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/divider"
+                android:layout_marginTop="335dp"/>
+
+            <!--  Account   -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="350dp"
+                android:layout_marginEnd="40dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_toEndOf="@id/circleImageView2"
+                    android:text="@string/account"
+                    android:textColor="@color/cardBackground"
+                    android:textSize="18sp"/>
+
+                <ImageView
+                    android:id="@+id/circleImageView2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/baseline_circle_24" />
+                <ImageView
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="13dp"
+                    android:src="@drawable/ic_profile"/>
+
+            </RelativeLayout>
+
+            <!--  Saved Addresses   -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="415dp"
+                android:layout_marginEnd="40dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_toEndOf="@id/circleImageView3"
+                    android:text="@string/saved_addresses"
+                    android:textColor="@color/cardBackground"
+                    android:textSize="18sp"/>
+
+                <ImageView
+                    android:id="@+id/circleImageView3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/baseline_circle_24" />
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/ic_home"/>
+
+            </RelativeLayout>
+
+            <!--  Reservation history   -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="480dp"
+                android:layout_marginEnd="40dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_toEndOf="@id/circleImageView4"
+                    android:text="@string/reservation_history"
+                    android:textColor="@color/cardBackground"
+                    android:textSize="18sp"/>
+
+                <ImageView
+                    android:id="@+id/circleImageView4"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/baseline_circle_24" />
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/ic_calendar_light" />
+
+            </RelativeLayout>
+
+            <!--  Payment   -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="545dp"
+                android:layout_marginEnd="40dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_toEndOf="@id/circleImageView5"
+                    android:text="@string/payment"
+                    android:textColor="@color/cardBackground"
+                    android:textSize="18sp"/>
+
+                <ImageView
+                    android:id="@+id/circleImageView5"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/baseline_circle_24" />
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/ic_credit_card"/>
+                <!--  todo set another color-->
+
+            </RelativeLayout>
+
+            <!-- Colorful line divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/divider"
+                android:layout_marginTop="625dp"/>
+
+            <!--  About   -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="635dp"
+                android:layout_marginEnd="40dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_toEndOf="@id/circleImageView"
+                    android:text="@string/about"
+                    android:textColor="@color/cardBackground"
+                    android:textSize="18sp"/>
+
+                <ImageView
+                    android:id="@+id/circleImageView"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/baseline_circle_24" />
+                <TextView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="10dp"
+                    android:text="i"
+                    android:textColor="@color/white"
+                    android:textSize="22dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="205dp"
+                android:layout_marginEnd="40dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
