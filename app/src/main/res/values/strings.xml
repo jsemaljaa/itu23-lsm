@@ -20,4 +20,6 @@
     <string name="payment">Payment</string>
     <string name="about">About</string>
     <string name="service_card_price">~15€/h</string>
+    <string name="make_reservation">Make Reservation</string>
+    <string name="service_desc">Cooking tutorial</string>
 </resources>

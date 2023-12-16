@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="background">#222C36</color>
+    <color name="background_alt_2">#424A52</color>
     <color name="headers">#2E3841</color>
 
     <color name="green">#46A477</color>

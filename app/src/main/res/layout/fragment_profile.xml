@@ -36,7 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginEnd="100dp">
+                android:layout_marginEnd="100dp"
+                android:layout_marginTop="-40dp">
 
                 <!-- Logo  -->
                 <ImageView
@@ -91,7 +92,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/rounded_upper_corners"
                 android:orientation="vertical"
-                android:layout_marginTop="180dp">
+                android:layout_marginTop="140dp">
             </LinearLayout>
 
             <!--  Dark mode   -->
@@ -99,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="255dp"
+                android:layout_marginTop="205dp"
                 android:layout_marginEnd="40dp"
                 android:padding="10dp">
 
@@ -148,14 +149,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@color/divider"
-                android:layout_marginTop="335dp"/>
+                android:layout_marginTop="285dp"/>
 
             <!--  Account   -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="350dp"
+                android:layout_marginTop="300dp"
                 android:layout_marginEnd="40dp"
                 android:padding="10dp">
 
@@ -189,7 +190,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="415dp"
+                android:layout_marginTop="365dp"
                 android:layout_marginEnd="40dp"
                 android:padding="10dp">
 
@@ -223,7 +224,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="480dp"
+                android:layout_marginTop="430dp"
                 android:layout_marginEnd="40dp"
                 android:padding="10dp">
 
@@ -257,7 +258,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="545dp"
+                android:layout_marginTop="495dp"
                 android:layout_marginEnd="40dp"
                 android:padding="10dp">
 
@@ -292,14 +293,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@color/divider"
-                android:layout_marginTop="625dp"/>
+                android:layout_marginTop="585dp"/>
 
             <!--  About   -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="635dp"
+                android:layout_marginTop="585dp"
                 android:layout_marginEnd="40dp"
                 android:padding="10dp">
 
@@ -334,7 +335,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="205dp"
+                android:layout_marginTop="144dp"
                 android:layout_marginEnd="40dp"
                 android:padding="10dp">
 
