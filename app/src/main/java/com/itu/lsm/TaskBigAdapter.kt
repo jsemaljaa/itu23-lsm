@@ -1,3 +1,6 @@
+// Author: Alina Vinogradova (xvinog00)
+
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
