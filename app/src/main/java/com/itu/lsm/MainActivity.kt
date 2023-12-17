@@ -73,4 +73,7 @@ class MainActivity : AppCompatActivity() {
         addService("6", "Cooking Lessons", "Perfect your palate and kitchen techniques in sessions designed for any skill level. Cook, create, and savor the success!", "~35€/h")
 
     }
+    override fun onSupportNavigateUp(): Boolean {
+        return findNavController(R.id.nav_host_fragment_activity_main).navigateUp() || super.onSupportNavigateUp()
+    }
 }

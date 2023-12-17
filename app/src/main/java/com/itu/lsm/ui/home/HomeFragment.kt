@@ -1,3 +1,6 @@
+// Author: Alina Vinogradova (xvinog00)
+
+
 package com.itu.lsm.ui.home
 
 import android.os.Bundle
@@ -12,15 +15,21 @@ import com.itu.lsm.TaskAdapter
 import com.itu.lsm.databinding.FragmentHomeBinding
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.itu.lsm.R
 import com.itu.lsm.ServiceAdapter
+import com.itu.lsm.classes.Service
 import com.itu.lsm.classes.Task
+import com.itu.lsm.ui.tasks.TaskDetailsFragment
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
     // ViewModel
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var sharedViewModel: SharedReservationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +43,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        sharedViewModel = ViewModelProvider(requireActivity()).get(SharedReservationViewModel::class.java)
 
         // Processing Upcoming tasks //
         binding.rvTasks.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -50,10 +60,12 @@ class HomeFragment : Fragment() {
             setupTabDots(minOf(tasks.size, 3))
         }
 
-
         // Processing Inspiration for you section //
         binding.rvInspiration.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        val serviceAdapterInsp = ServiceAdapter(emptyList())
+        val serviceAdapterInsp = ServiceAdapter(emptyList()) { service ->
+            sharedViewModel.selectService(service)
+            navigateToServiceDetails(service)
+        }
         binding.rvInspiration.adapter = serviceAdapterInsp
 
         PagerSnapHelper().attachToRecyclerView(binding.rvInspiration)
@@ -64,7 +76,10 @@ class HomeFragment : Fragment() {
 
         // Processing Popular in your area section //
         binding.rvPopular.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        val serviceAdapterPop = ServiceAdapter(emptyList())
+        val serviceAdapterPop = ServiceAdapter(emptyList()) { service ->
+            sharedViewModel.selectService(service)
+            navigateToServiceDetails(service)
+        }
         binding.rvPopular.adapter = serviceAdapterPop
 
         PagerSnapHelper().attachToRecyclerView(binding.rvPopular)
@@ -74,6 +89,11 @@ class HomeFragment : Fragment() {
         }
 
         setupRecyclerViewScrollListener()
+    }
+
+    private fun navigateToServiceDetails(service: Service) {
+        val action = HomeFragmentDirections.actionNavigationHomeToServiceDetailsFragment(service)
+        findNavController().navigate(action)
     }
 
     private fun setupTabDots(itemCount: Int) {
@@ -107,6 +127,4 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

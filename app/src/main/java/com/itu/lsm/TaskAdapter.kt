@@ -1,3 +1,6 @@
+// Author: Alina Vinogradova (xvinog00)
+
+
 package com.itu.lsm
 
 import android.view.LayoutInflater

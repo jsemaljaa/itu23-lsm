@@ -1,3 +1,6 @@
+// Author: Alina Vinogradova (xvinog00)
+
+
 package com.itu.lsm.ui.tasks
 
 import TaskBigAdapter
@@ -9,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -56,14 +60,16 @@ class TasksFragment : Fragment(), TaskBigAdapter.OnTaskClickListener {
 
     override fun onCardClicked(task: Task) {
         // Start TaskDetailsFragment and pass the task to it
-        val taskDetailsFragment = TaskDetailsFragment.newInstance(task)
-        requireActivity().supportFragmentManager.beginTransaction().apply {
-            // Replace the current fragment with the TaskDetailsFragment
-            replace(R.id.tasks_fragment_container, taskDetailsFragment)
-
-            addToBackStack("taskDetails")
-            commit()
-        }
+        val action = TasksFragmentDirections.actionNavigationTasksToTaskDetailsFragment(task)
+        findNavController().navigate(action)
+//        val taskDetailsFragment = TaskDetailsFragment.newInstance(task)
+//        requireActivity().supportFragmentManager.beginTransaction().apply {
+//            // Replace the current fragment with the TaskDetailsFragment
+//            replace(R.id.tasks_fragment_container, taskDetailsFragment)
+//
+//            addToBackStack("taskDetails")
+//            commit()
+//        }
     }
 
 

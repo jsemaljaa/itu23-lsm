@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="CustomTimePickerTheme" parent="Widget.MaterialComponents.TimePicker.Clock">
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:colorAccent">@color/white</item>
+        <item name="android:numbersTextColor">@color/white</item>
+        <item name="android:numbersSelectorColor">@color/white</item>
+        <item name="android:numbersInnerTextColor">@color/white</item>
+    </style>
+
     <style name="CustomTabLayout" parent="Widget.MaterialComponents.TabLayout">
         <item name="tabInlineLabel">true</item>
         <item name="tabPaddingStart">5dp</item>

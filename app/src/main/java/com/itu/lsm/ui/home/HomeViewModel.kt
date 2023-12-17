@@ -1,3 +1,6 @@
+// Author: Alina Vinogradova (xvinog00)
+
+
 package com.itu.lsm.ui.home
 
 import android.util.Log
