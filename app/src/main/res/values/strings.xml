@@ -23,4 +23,6 @@
     <string name="make_reservation">Make Reservation</string>
     <string name="service_desc">Cooking tutorial</string>
     <string name="planned_tasks">Planned tasks</string>
+    <string name="remove">Remove</string>
+    <string name="username">Username</string>
 </resources>
