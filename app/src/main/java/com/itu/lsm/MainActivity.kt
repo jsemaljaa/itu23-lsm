@@ -18,6 +18,8 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.itu.lsm.classes.Service
 import com.itu.lsm.classes.Task
+import com.itu.lsm.classes.Chat
+
 import java.util.UUID
 
 
@@ -71,6 +73,16 @@ class MainActivity : AppCompatActivity() {
         addService("4", "Counselling", "Navigate life's challenges with tailored counseling. Compassionate support, insightful assistance.", "~40€/h")
         addService("5", "English Lessons", "Experience engaging, interactive learning that boosts your confidence and command of the language.", "~30€/h")
         addService("6", "Cooking Lessons", "Perfect your palate and kitchen techniques in sessions designed for any skill level. Cook, create, and savor the success!", "~35€/h")
+
+//        var chatsRef = database.child("chats")
+//
+//        fun addChat(id: String, name: String, messagePreview: String, timestamp: String, unreadCount: Int) {
+//            chatsRef.child(id).setValue(Chat(id, name, messagePreview, timestamp, unreadCount))
+//        }
+//
+//        addChat(id = "1", name = "Alice Smith", messagePreview = "Hi there! How are you?", timestamp = "10:42 AM", unreadCount = 2)
+//        addChat(id = "2", name = "Bob Johnson", messagePreview = "Don't forget about the meeting.", timestamp = "Yesterday", unreadCount = 1)
+//        addChat(id = "3", name = "Charlie Brown", messagePreview = "Can you send me the report?", timestamp = "2 days ago", unreadCount = 0)
 
     }
 }

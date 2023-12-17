@@ -12,4 +12,6 @@
     <string name="search_hint">What services are you looking for?</string>
     <string name="service_card_price">~15€/h</string>
     <string name="planned_tasks">Planned tasks</string>
+    <string name="search_chats">Search</string>
+
 </resources>
