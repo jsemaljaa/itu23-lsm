@@ -62,14 +62,6 @@ class TasksFragment : Fragment(), TaskBigAdapter.OnTaskClickListener {
         // Start TaskDetailsFragment and pass the task to it
         val action = TasksFragmentDirections.actionNavigationTasksToTaskDetailsFragment(task)
         findNavController().navigate(action)
-//        val taskDetailsFragment = TaskDetailsFragment.newInstance(task)
-//        requireActivity().supportFragmentManager.beginTransaction().apply {
-//            // Replace the current fragment with the TaskDetailsFragment
-//            replace(R.id.tasks_fragment_container, taskDetailsFragment)
-//
-//            addToBackStack("taskDetails")
-//            commit()
-//        }
     }
 
 

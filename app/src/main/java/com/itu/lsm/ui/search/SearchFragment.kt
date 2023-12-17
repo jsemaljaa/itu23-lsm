@@ -4,35 +4,69 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.itu.lsm.R
+import com.itu.lsm.ServiceBigAdapter
+import com.itu.lsm.classes.Service
 import com.itu.lsm.databinding.FragmentSearchBinding
+import com.itu.lsm.ui.home.SharedReservationViewModel
 
 class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var searchViewModel: SearchViewModel
+    private lateinit var sharedViewModel: SharedReservationViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
-        val searchViewModel =
-                ViewModelProvider(this).get(SearchViewModel::class.java)
-
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
-        val textView: TextView = binding.textSearch
-        searchViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        searchViewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
+        sharedViewModel = ViewModelProvider(requireActivity()).get(SharedReservationViewModel::class.java)
+
+        val serviceAdapter = ServiceBigAdapter(emptyList()) { service ->
+            sharedViewModel.selectService(service)
+            navigateToServiceDetails(service)
         }
-        return root
+        binding.rvSearchResults.layoutManager = LinearLayoutManager(context)
+        binding.rvSearchResults.adapter = serviceAdapter
+
+        searchViewModel.fetchServices()
+
+        searchViewModel.services.observe(viewLifecycleOwner) { services ->
+            if (services != null) {
+                serviceAdapter.updateServices(services)
+            }
+        }
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let { searchViewModel.searchServices(it) }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { searchViewModel.searchServices(it) }
+                return false
+            }
+        })
+    }
+
+    private fun navigateToServiceDetails(service: Service) {
+        val action = SearchFragmentDirections.actionNavigationSearchToServiceDetailsFragment(service)
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

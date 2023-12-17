@@ -19,8 +19,13 @@
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.itu.lsm.ui.search.SearchFragment"
-        android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_search_to_serviceDetailsFragment"
+            app:destination="@id/serviceDetailsFragment">
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_tasks"
