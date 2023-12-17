@@ -144,9 +144,9 @@ class MainActivity : AppCompatActivity() {
         addUser(
             // UUID.randomUUID().toString(), // Generate a unique ID
             "1",
-           "UsernameTest",
-            "Name",
-            "Surname",
+           "iamalina",
+            "Alina",
+            "Alinina",
             24
         )
 
