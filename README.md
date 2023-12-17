@@ -12,12 +12,13 @@ Follow these steps to set up and run the project locally. Optionally, you can us
 - Emulator or physical Android device for testing
 
 ### Steps
-
- ⁃ Open the project in Android Studio
- ⁃ Click on the green play button in the top-right angle in order to start emulation
- ⁃ Android Studio will build the project 
- ⁃ Once installation is is complete, you can proceed with exploring the app
-
+<ul>
+  <li>Open the project in Android Studio</li>
+  <li>Open the project in Android Studio</li>
+  <li>Click on the green play button in the top-right angle in order to start emulation</li>
+  <li>Android Studio will build the project</li>
+  <li>Once installation is is complete, you can proceed with exploring the app</li>
+</ul>
 ## Used libraries and their licences 
 
 [Android Developer Documentation](https://developer.android.com/)
