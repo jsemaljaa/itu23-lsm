@@ -19,6 +19,7 @@ Follow these steps to set up and run the project locally. Optionally, you can us
   <li>Android Studio will build the project</li>
   <li>Once installation is is complete, you can proceed with exploring the app</li>
 </ul>
+
 ## Used libraries and their licences 
 
 [Android Developer Documentation](https://developer.android.com/)
