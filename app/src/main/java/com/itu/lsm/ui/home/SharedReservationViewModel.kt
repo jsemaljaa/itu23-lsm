@@ -7,7 +7,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.itu.lsm.classes.Service
-import java.util.*
 
 class SharedReservationViewModel : ViewModel() {
     private val _selectedService = MutableLiveData<Service>()

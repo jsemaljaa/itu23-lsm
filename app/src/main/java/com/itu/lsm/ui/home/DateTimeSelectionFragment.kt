@@ -35,10 +35,6 @@ class DateTimeSelectionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val sharedViewModel = ViewModelProvider(requireActivity()).get(SharedReservationViewModel::class.java)
 
-        sharedViewModel.selectedLocation.observe(viewLifecycleOwner, { location ->
-            // Use the selected location as needed
-        })
-
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_MONTH, 1)
         binding.datePicker.minDate = calendar.timeInMillis

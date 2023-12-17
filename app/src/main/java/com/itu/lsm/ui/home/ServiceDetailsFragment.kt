@@ -19,7 +19,6 @@ class ServiceDetailsFragment : Fragment() {
     private var _binding: FragmentServiceDetailsBinding? = null
     private val binding get() = _binding!!
 
-    // Assuming Service class has title, price, and description fields
     private var service: Service? = null
 
     override fun onCreateView(
@@ -56,7 +55,7 @@ class ServiceDetailsFragment : Fragment() {
     }
 
     private fun navigateToLocationSelection() {
-        // Replace 'action_serviceDetails_to_locationSelection' with the actual action ID
+        // Navigate to location selection
         findNavController().navigate(R.id.action_serviceDetails_to_locationSelection)
     }
 

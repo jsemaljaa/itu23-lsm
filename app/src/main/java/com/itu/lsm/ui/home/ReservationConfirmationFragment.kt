@@ -58,7 +58,7 @@ class ReservationConfirmationFragment : Fragment() {
         tasksRef.orderByKey().limitToLast(1).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    // Assuming the key is a string that can be converted to an integer
+                    // Convert string to int to get new ID
                     val lastId = snapshot.children.first().key?.toIntOrNull() ?: 0
                     val newId = lastId + 1
                     saveReservation(newId)

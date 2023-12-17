@@ -1,5 +1,6 @@
 // Author: Alina Vinogradova (xvinog00)
 
+
 package com.itu.lsm.ui.home
 
 import android.os.Bundle
@@ -41,7 +42,6 @@ class LocationSelectionFragment : Fragment() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-                // Another interface callback
             }
         }
 
@@ -55,7 +55,7 @@ class LocationSelectionFragment : Fragment() {
     }
 
     private fun setupSpinner() {
-        // Example setup for a spinner with hardcoded location options
+        // setup for a spinner with hardcoded location options
         val locations = listOf("Online", "Brno", "Prague", "Olomouc", "Ostrava")
         val adapter = ArrayAdapter(requireContext(), R.layout.location_spinner_item, locations)
         binding.spinnerLocations.adapter = adapter
