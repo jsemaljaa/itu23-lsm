@@ -59,7 +59,7 @@ class TasksFragment : Fragment(), TaskBigAdapter.OnTaskClickListener {
         val taskDetailsFragment = TaskDetailsFragment.newInstance(task)
         requireActivity().supportFragmentManager.beginTransaction().apply {
             // Replace the current fragment with the TaskDetailsFragment
-            replace(R.id.nav_host_fragment_activity_main, taskDetailsFragment)
+            replace(R.id.tasks_fragment_container, taskDetailsFragment)
 
             addToBackStack("taskDetails")
             commit()
