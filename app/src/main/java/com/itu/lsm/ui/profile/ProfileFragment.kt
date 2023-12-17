@@ -85,6 +85,7 @@ class ProfileFragment : Fragment() {
     }
 
     // Define setUsersReference function to set the reference from MainActivity
+    // usersRef
     fun setUsersReference(usersRef: DatabaseReference) {
         this.usersRef = usersRef
     }
