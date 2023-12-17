@@ -80,7 +80,7 @@
                     android:id="@+id/surnameText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="108dp"
+                    android:layout_marginTop="113dp"
                     android:layout_toEndOf="@id/profileImage"
                     android:text="@string/surname"
                     android:textColor="@color/white"
