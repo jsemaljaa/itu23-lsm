@@ -21,4 +21,6 @@ Follow these steps to set up and run the project locally. Optionally, you can us
 ## Used libraries and their licences 
 
 [Android Developer Documentation](https://developer.android.com/)
+
+
 [Android Studio](https://developer.android.com/studio?gclid=CjwKCAiA1fqrBhA1EiwAMU5m_7qVts21JsYNqFkg7BrjoDntP3eS6mD1SA5Tkyf9U97mPMcCRDE8OBoCn5EQAvD_BwE&gclsrc=aw.ds)
