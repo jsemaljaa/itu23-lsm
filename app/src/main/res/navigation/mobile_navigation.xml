@@ -9,7 +9,12 @@
         android:id="@+id/navigation_home"
         android:name="com.itu.lsm.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_serviceDetailsFragment"
+            app:destination="@id/serviceDetailsFragment">
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_search"
@@ -21,7 +26,22 @@
         android:id="@+id/navigation_tasks"
         android:name="com.itu.lsm.ui.tasks.TasksFragment"
         android:label="@string/title_tasks"
-        tools:layout="@layout/fragment_tasks" />
+        tools:layout="@layout/fragment_tasks">
+        <action
+            android:id="@+id/action_navigation_tasks_to_taskDetailsFragment"
+            app:destination="@id/taskDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/taskDetailsFragment"
+        android:name="com.itu.lsm.ui.tasks.TaskDetailsFragment"
+        android:label="Task Details"
+        tools:layout="@layout/fragment_task_details">
+        <argument
+            android:name="task"
+            app:argType="com.itu.lsm.classes.Task" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/navigation_messages"
@@ -32,7 +52,62 @@
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.itu.lsm.ui.profile.ProfileFragment"
-        android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_account_to_reservations_history"
+            app:destination="@id/fragment_reservations_history" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_reservations_history"
+        android:name="com.itu.lsm.ui.profile.ReservationsHistoryFragment"
+        android:label="Reservations History"
+        android:layout="@layout/fragment_reservations_history">
+    </fragment>
+
+    <fragment
+        android:id="@+id/serviceDetailsFragment"
+        android:name="com.itu.lsm.ui.home.ServiceDetailsFragment"
+        android:label="Service Details"
+        tools:layout="@layout/fragment_service_details">
+        <argument
+            android:name="service"
+            app:argType="com.itu.lsm.classes.Service" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/locationSelectionFragment"
+        android:name="com.itu.lsm.ui.home.LocationSelectionFragment"
+        android:label="Select Location"
+        tools:layout="@layout/fragment_location_selection" />
+
+    <fragment
+        android:id="@+id/reservationConfirmationFragment"
+        android:name="com.itu.lsm.ui.home.ReservationConfirmationFragment"
+        tools:layout="@layout/fragment_reservation_confirmation" />
+
+    <fragment
+        android:id="@+id/dateTimeSelectionFragment"
+        android:name="com.itu.lsm.ui.home.DateTimeSelectionFragment"
+        android:label="Select Date and Time"
+        tools:layout="@layout/fragment_datetime_selection">
+    <action
+        android:id="@+id/action_dateTimeSelection_to_reservationConfirmation"
+        app:destination="@id/reservationConfirmationFragment" />
+    </fragment>
+
+    <!-- Navigation Actions -->
+    <action
+        android:id="@+id/action_serviceDetails_to_locationSelection"
+        app:destination="@id/locationSelectionFragment" />
+
+    <action
+        android:id="@+id/action_locationSelection_to_dateTimeSelection"
+        app:destination="@id/dateTimeSelectionFragment" />
+
+    <action
+        android:id="@+id/action_reservationConfirmation_to_tasksPage"
+        app:destination="@id/navigation_tasks" />
 
 </navigation>

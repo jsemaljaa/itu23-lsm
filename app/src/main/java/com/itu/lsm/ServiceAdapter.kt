@@ -1,3 +1,6 @@
+// Author: Alina Vinogradova (xvinog00)
+
+
 package com.itu.lsm
 
 import android.media.Image
@@ -9,7 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.itu.lsm.classes.Service
 
-class ServiceAdapter(private var dataset: List<Service>) : RecyclerView.Adapter<ServiceAdapter.InspirationViewHolder>() {
+class ServiceAdapter(private var dataset: List<Service>, private val onServiceClick: (Service) -> Unit) : RecyclerView.Adapter<ServiceAdapter.InspirationViewHolder>() {
 
     class InspirationViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val priceTextView: TextView = view.findViewById(R.id.tvPrice)
@@ -31,7 +34,13 @@ class ServiceAdapter(private var dataset: List<Service>) : RecyclerView.Adapter<
         holder.descriptionTextView.text = item.description
 
         holder.imageView.setImageResource(getImageResourceBasedOnTitle(item.title))
+
+        holder.itemView.setOnClickListener {
+            onServiceClick(item)
+        }
     }
+
+
 
     private fun getImageResourceBasedOnTitle(title: String): Int {
         return when (title) {

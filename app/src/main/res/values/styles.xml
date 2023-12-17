@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="CustomTimePickerTheme" parent="Widget.MaterialComponents.TimePicker.Clock">
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:colorAccent">@color/white</item>
+        <item name="android:numbersTextColor">@color/white</item>
+        <item name="android:numbersSelectorColor">@color/white</item>
+        <item name="android:numbersInnerTextColor">@color/white</item>
+    </style>
+
     <style name="CustomTabLayout" parent="Widget.MaterialComponents.TabLayout">
         <item name="tabInlineLabel">true</item>
         <item name="tabPaddingStart">5dp</item>
         <item name="tabPaddingEnd">5dp</item>
     </style>
 
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
     <style name="RoundedImageView">
         <item name="android:scaleType">centerCrop</item>
         <item name="android:adjustViewBounds">true</item>
         <item name="android:background">@drawable/rounded_corners</item>
+
     </style>
 </resources>

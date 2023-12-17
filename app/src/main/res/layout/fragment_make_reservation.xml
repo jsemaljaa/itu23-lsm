@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Author: Anastasiia Berezovska xberez04 -->
+<!-- Make Reservation screen with the details of actual chosen service -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-40dp">
+
+            <!-- todo Back Button -->
+
+            <!-- Logo  -->
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="30dp"
+                android:src="@drawable/logo" />
+
+            <!-- Default Profile Picture  -->
+            <ImageView
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:layout_marginStart="330dp"
+                android:layout_marginTop="65dp"
+                android:src="@drawable/default_profile_pic" />
+        </RelativeLayout>
+
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:orientation="vertical">
+
+        <!-- Make Reservation -->
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/make_reservation"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <!-- Card with the picture of the service -->
+        <!--        <androidx.cardview.widget.CardView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="160dp"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:layout_marginTop="20dp"-->
+        <!--            app:cardCornerRadius="50dp">-->
+
+        <!--            <ImageView-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="160dp"-->
+        <!--                android:layout_marginTop="0dp"-->
+        <!--                android:scaleType="centerCrop"-->
+        <!--                android:src="@drawable/cooking_course" />-->
+        <!--        </androidx.cardview.widget.CardView>-->
+
+        <!-- Card with the picture of the service -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cooking_course" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/service_desc"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Colorful line divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/background_alt_2" />
+
+
+        <!-- Details (Service Providers) -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Service providers"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="300dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="25dp"
+            app:cardBackgroundColor="@color/background_alt_2"
+            app:cardCornerRadius="50dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/chef" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="29dp"
+                    android:layout_toEndOf="@id/image"
+                    android:text="@string/name"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_toEndOf="@id/image"
+                    android:text="@string/surname"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="67dp"
+                    android:layout_toEndOf="@id/image"
+                    android:text="Chef at Star Restaurant"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- Details (Duration, Price) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- First Component -->
+                <LinearLayout
+                    android:layout_width="166dp"
+                    android:layout_height="100dp"
+                    android:background="@color/background_alt_2"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:padding="16dp">
+                        <!-- Clock icon -->
+                        <ImageView
+                            android:id="@+id/Icon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="left"
+                            android:layout_marginEnd="16dp"
+                            android:src="@drawable/ic_clock" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/Icon"
+                            android:gravity="right"
+                            android:text="5h"
+                            android:textColor="@color/white"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="-30dp"
+                        android:text="5 lessons in course"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Second component -->
+                <LinearLayout
+                    android:layout_width="166dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="80dp"
+                    android:background="@color/background_alt_2"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+
+                        android:layout_height="100dp"
+                        android:padding="16dp">
+
+                        <!-- Euro icon -->
+                        <ImageView
+                            android:id="@+id/Icon2"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="left"
+                            android:layout_marginEnd="16dp"
+                            android:src="@drawable/ic_euro" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/Icon2"
+                            android:gravity="right"
+                            android:text="10€"
+                            android:textColor="@color/white"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="-30dp"
+                        android:text="The price is for 1h"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp">
+
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:focusable="false"
+                android:hint="What date is suitable for you?"
+                android:inputType="none"
+                android:textColorHint="@color/white" />
+
+            <ImageView
+                android:id="@+id/Icon3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="45dp"
+                android:layout_marginEnd="16dp"
+                android:layout_toEndOf="@id/editTextDate"
+                android:src="@drawable/ic_calendar_light" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    </ScrollView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
