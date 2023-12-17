@@ -15,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 import com.itu.lsm.classes.Reservation
 import com.itu.lsm.classes.Service
 import com.itu.lsm.classes.Task
+import com.itu.lsm.classes.Chat
 import com.itu.lsm.classes.User
 import com.itu.lsm.ui.profile.ProfileFragment
 
@@ -69,7 +70,6 @@ class MainActivity : AppCompatActivity() {
         addService("4", "Counselling", "Navigate life's challenges with tailored counseling. Compassionate support, insightful assistance.", "~40€/h")
         addService("5", "English Lessons", "Experience engaging, interactive learning that boosts your confidence and command of the language.", "~30€/h")
         addService("6", "Cooking Lessons", "Perfect your palate and kitchen techniques in sessions designed for any skill level. Cook, create, and savor the success!", "~35€/h")
-
 
         val reservationsRef = database.child("reservations")
 
