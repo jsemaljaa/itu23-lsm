@@ -1,12 +1,12 @@
+// Author: Anastasiia Berezovska
+
 package com.itu.lsm
 
-// UserAdapter.kt
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.itu.lsm.R  // Replace with your actual package name
 import com.itu.lsm.classes.User
 
 class UserAdapter(private val userList: List<User>) :

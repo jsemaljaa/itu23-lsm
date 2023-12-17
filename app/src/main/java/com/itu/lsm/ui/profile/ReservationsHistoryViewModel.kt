@@ -1,3 +1,5 @@
+// Author: Anastasiia Berezovska xberez04
+
 package com.itu.lsm.ui.profile
 
 import androidx.lifecycle.LiveData

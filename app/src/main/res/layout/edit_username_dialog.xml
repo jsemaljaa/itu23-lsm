@@ -1,4 +1,5 @@
-<!-- res/layout/edit_username_dialog.xml -->
+<!-- Dialog window for editing username -->
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
