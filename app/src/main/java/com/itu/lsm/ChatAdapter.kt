@@ -1,3 +1,6 @@
+// Author: Maryia Mazurava xmazur08
+
+
 package com.itu.lsm
 import android.util.Log
 
@@ -27,6 +30,7 @@ class ChatAdapter(private var chats: List<Chat>) : RecyclerView.Adapter<ChatAdap
         notifyDataSetChanged()
     }
 
+
     class ChatViewHolder(private val binding: ItemChatBinding, private val listener: OnItemClickListener?, private val selectedChatIds: HashSet<String>) : RecyclerView.ViewHolder(binding.root) {
         fun bind(chat: Chat, showCheckBox: Boolean) {
             binding.chatNameTextView.text = chat.name
@@ -43,20 +47,19 @@ class ChatAdapter(private var chats: List<Chat>) : RecyclerView.Adapter<ChatAdap
             binding.checkBox.visibility = if (showCheckBox) View.VISIBLE else View.GONE
             binding.checkBox.isChecked = selectedChatIds.contains(chat.id)
 
-            itemView.setOnClickListener {
-                if (showCheckBox) {
-                    val isChecked = binding.checkBox.isChecked
-                    binding.checkBox.isChecked = !isChecked
-                    if (binding.checkBox.isChecked) {
-                        selectedChatIds.add(chat.id)
-                        Log.d("ChatAdapter", "Selected chat with ID: ${chat.id}")
-                    } else {
-                        selectedChatIds.remove(chat.id)
-                        Log.d("ChatAdapter", "Deselected chat with ID: ${chat.id}")
-                    }
+            binding.checkBox.setOnClickListener {
+                val isChecked = binding.checkBox.isChecked
+                val chatId = chat.id
+
+                if (isChecked) {
+                    selectedChatIds.add(chatId)
+                } else {
+                    selectedChatIds.remove(chatId)
                 }
+
                 listener?.onItemClick(chat, adapterPosition)
             }
+
         }
     }
 
@@ -79,6 +82,9 @@ class ChatAdapter(private var chats: List<Chat>) : RecyclerView.Adapter<ChatAdap
 
     fun getSelectedChatIds(): HashSet<String> {
         return selectedChatIds
+    }
+    fun setSelectedChatIds(selectedIds: HashSet<String>) {
+        selectedChatIds = selectedIds
     }
 
     fun clearSelectedChatIds() {
