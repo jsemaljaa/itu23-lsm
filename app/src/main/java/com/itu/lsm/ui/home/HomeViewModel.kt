@@ -56,8 +56,6 @@ class HomeViewModel : ViewModel() {
     private fun loadServices() {
         servicesRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val serviceList = mutableListOf<Service>()
-
                 val inspList = mutableListOf<Service>()
                 val popList = mutableListOf<Service>()
 
@@ -73,7 +71,6 @@ class HomeViewModel : ViewModel() {
                     }
                 }
 
-//                dataSnapshot.children.mapNotNullTo(serviceList) { it.getValue<Service>(Service::class.java) }
                 _servicesInspiration.value = inspList
                 _servicesPopular.value = popList
             }

@@ -40,8 +40,6 @@ class ServiceAdapter(private var dataset: List<Service>, private val onServiceCl
         }
     }
 
-
-
     private fun getImageResourceBasedOnTitle(title: String): Int {
         return when (title) {
             "Tutoring" -> R.drawable.ai_tutoring
