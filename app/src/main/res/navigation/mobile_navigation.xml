@@ -52,8 +52,19 @@
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.itu.lsm.ui.profile.ProfileFragment"
-        android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_account_to_reservations_history"
+            app:destination="@id/fragment_reservations_history" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_reservations_history"
+        android:name="com.itu.lsm.ui.profile.ReservationsHistoryFragment"
+        android:label="Reservations History"
+        android:layout="@layout/fragment_reservations_history">
+    </fragment>
 
     <fragment
         android:id="@+id/serviceDetailsFragment"

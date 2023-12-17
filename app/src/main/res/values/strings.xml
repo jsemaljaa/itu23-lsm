@@ -10,6 +10,19 @@
     <string name="user_name_greeting">Hello, Alina</string>
     <string name="app_label">LSM</string>
     <string name="search_hint">What services are you looking for?</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="settings">Settings</string>
+    <string name="account">Account</string>
+    <string name="saved_addresses">Saved addresses</string>
+    <string name="reservation_history">Reservation History</string>
+    <string name="payment">Payment</string>
+    <string name="about">About</string>
     <string name="service_card_price">~15€/h</string>
+    <string name="make_reservation">Make Reservation</string>
+    <string name="service_desc">Cooking tutorial</string>
     <string name="planned_tasks">Planned tasks</string>
+    <string name="remove">Remove</string>
+    <string name="username">Username</string>
 </resources>
