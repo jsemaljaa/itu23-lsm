@@ -1,17 +1,11 @@
-import android.app.Dialog
-import android.widget.Button
-import android.widget.EditText
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.Firebase
-import com.google.firebase.FirebaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
-import com.itu.lsm.R
-import kotlin.math.log
 
 class ProfileViewModel : ViewModel() {
 
@@ -51,7 +45,6 @@ class ProfileViewModel : ViewModel() {
     }
 
     fun updateUsername(newUsername: String) {
-        // Assuming you have a user ID, replace "userId" with the actual user ID
         val userId = "1"
 
         // Update the username in the database

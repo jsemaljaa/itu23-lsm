@@ -1,3 +1,5 @@
+// Author: Anastasiia Berezovska
+
 package com.itu.lsm.ui.profile
 
 import android.os.Bundle
@@ -34,10 +36,8 @@ class ReservationsHistoryFragment : Fragment() {
         // todo later replace this with list of reservations
         val reservations = getDummyReservations()
 
-        // Provide a lambda function to handle remove button clicks
         reservationsAdapter = ReservationsAdapter(reservations) { position ->
             // Handle the "Remove" button click for the item at the specified position
-            // e.g., remove the reservation from the list
             reservationsAdapter.notifyItemRemoved(position)
         }
 
